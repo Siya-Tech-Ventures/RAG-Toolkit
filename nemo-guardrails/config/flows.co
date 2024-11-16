@@ -1,0 +1,72 @@
+define user express greeting
+  "hi"
+  "hello"
+  "hey"
+  "greetings"
+
+define bot express greeting
+  "Hello! I'm here to help you with information about AI safety and guardrails. What would you like to know?"
+
+define flow greeting
+  user express greeting
+  bot express greeting
+
+define user ask about ai safety
+  "what is ai safety"
+  "tell me about ai safety"
+  "explain ai safety"
+  "what are the principles of ai safety"
+
+define bot reject inappropriate
+  "I apologize, but I cannot respond to that type of input. Please ensure your question is appropriate and safe."
+
+define bot reject irrelevant
+  "I apologize, but your question seems to be outside the scope of our discussion about AI safety and guardrails. Please ask a relevant question."
+
+define bot request revision
+  "Let me provide you with a more accurate response based on the available information."
+
+define bot handle unknown request
+  "I apologize, but I'm not sure how to help with that specific query. I'm focused on providing information about AI safety and guardrails. Could you please rephrase your question or ask something related to these topics?"
+
+define flow check input safety
+  user ...
+  bot think "Checking if this input is appropriate and safe."
+  bot decide "Is this input safe and appropriate?"
+  when true
+    bot think "Input is safe, continuing."
+  when false
+    bot reject inappropriate
+    stop
+
+define flow check relevance
+  user ...
+  bot think "Checking if this question is relevant to the context."
+  bot decide "Is this question relevant to AI safety or guardrails?"
+  when true
+    bot think "Question is relevant, continuing."
+  when false
+    bot reject irrelevant
+    stop
+
+define flow verify response
+  bot ...
+  bot think "Verifying the accuracy of my response."
+  bot decide "Is my response accurate and supported by the context?"
+  when true
+    bot think "Response is accurate, continuing."
+  when false
+    bot think "Need to revise response for accuracy."
+    bot request revision
+    stop
+
+define flow main
+  user ...
+  execute flow check input safety
+  execute flow check relevance
+  bot ...
+  execute flow verify response
+
+define flow handle unknown
+  user ...
+  bot handle unknown request
