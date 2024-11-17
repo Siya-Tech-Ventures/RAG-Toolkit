@@ -1,0 +1,10 @@
+Phoenix is a powerful RAG evaluation framework designed to help developers build and evaluate retrieval-augmented generation (RAG) systems. It provides comprehensive tracing and monitoring capabilities, allowing developers to track and analyze the performance of their RAG implementations.
+
+Key features of Phoenix include:
+1. OpenTelemetry integration for detailed tracing
+2. Support for various embedding models and vector stores
+3. Built-in evaluation metrics for RAG systems
+4. Easy integration with popular LLM providers like OpenAI
+5. Real-time monitoring and debugging capabilities
+
+RAG systems combine the power of retrieval and generation to provide more accurate and contextual responses. By retrieving relevant information from a knowledge base and using it to generate responses, RAG systems can provide more reliable and factual answers compared to traditional language models.
