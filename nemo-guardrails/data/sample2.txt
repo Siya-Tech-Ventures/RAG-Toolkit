@@ -1,28 +1,33 @@
-Implementing AI Guardrails in Practice
+Develop Reliable and Safe LLM Systems Using Scorecard With AI Guardrails
 
-When implementing AI guardrails, consider these practical guidelines:
+In order to develop controllable and safe LLM applications, you can integrate Scorecard with the open-source toolkits NeMo Guardrails and Guardrails AI. Both tools make it possible to program guardrails that safeguard conversations with the LLM system. Guardrails are specific ways of controlling the response of a LLM to a user input, such as using a particular language style, following a predefined conversation flow, not talking about certain topics, and more.
 
-1. Content Filtering
-- Implement robust content moderation
-- Filter out inappropriate or harmful content
-- Maintain user safety while preserving functionality
+Benefits of Using AI Guardrails
+Key benefits of adding programmable guardrails include:
 
-2. Topic Boundaries
-- Define clear scope of acceptable topics
-- Implement topic detection mechanisms
-- Handle off-topic queries gracefully
+Trustworthiness and Reliability: Guardrails can be used to guide and safeguard conversations between your users and your LLM system. You can choose to define the behavior of your LLM system on specific topics and prevent it from engaging in discussions on unwanted topics.
 
-3. Response Quality
-- Ensure responses are factual and accurate
-- Maintain consistent tone and style
-- Include relevant context when needed
+Controllable Dialog: Use guardrails to steer the LLM to follow pre-defined conversational flows, making sure the LLM follows best practices in conversation design and enforces standard procedures, such as authentication.
 
-4. Error Handling
-- Graceful handling of edge cases
-- Clear error messages
-- User-friendly fallback responses
+Protection against Vulnerabilities: Guardrails can be specified in a way that they can help increase the security of your LLM application by checking for LLM vulnerabilities, such as checking for secrets in user inputs or LLM responses or detecting prompt injections.
 
-5. Monitoring and Improvement
-- Track system performance
-- Collect user feedback
-- Regular updates and improvements
+Types of Guardrails
+In the following, we give a brief overview of the types of guardrails that can be specified with the open-source toolkits NeMo Guardrails and Guardrails AI. For further technical documentation, please check out the respective GitHub repositories and documentations.
+
+NeMo Guardrails
+Technical Documentation: https://docs.nvidia.com/nemo/guardrails
+GitHub Repository: https://github.com/NVIDIA/NeMo-Guardrails
+NeMo Guardrails supports five main types of guardrails (short: rails):
+
+Type of AI Guardrails with NeMo Guardrails
+
+Type of AI Guardrails with NeMo Guardrails (NVIDIA, 2024)
+Input Rails: Checking the user input, an input rail can reject, change (e.g., to rephrase or mask sensitive data), or stop processing the input.
+
+Dialog Rails: Dialog rails influence how the LLM is prompted and determine if an action should be executed, if the LLM should be invoked to generate the next step or a response, if a predefined response should be used instead, etc.
+
+Retrieval Rails: When using a RAG (Retrieval Augmented Generation) LLM system, retrieval rails check the retrieved documents and can reject, change (e.g., to rephrase or mask sensitive data), or stop processing specific chunks.
+
+Execution Rails: Execution rails use mechanisms to check and verify the inputs and/or outputs of custom actions that are being evoked by the LLM (e.g., the LLM triggering actions in other tools).
+
+Output Rails: Checking the response of a LLM, an output rail can reject, change (e.g., remove sensitive data), or remove a LLM’s response.

@@ -84,10 +84,8 @@ class RAGWithGuardrails:
                 {"role": "system", "content": f"Context: {context}\n\nRespond based on the context provided. If the information isn't in the context, say so."},
                 {"role": "user", "content": user_input}
             ]
-
             # Generate response using guardrails
             response = self.rails.generate(messages=messages)
-            
             # Handle different response formats
             if isinstance(response, dict):
                 return response.get('content', response.get('output', str(response)))
