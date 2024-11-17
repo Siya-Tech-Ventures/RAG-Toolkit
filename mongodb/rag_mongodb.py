@@ -272,8 +272,23 @@ if __name__ == "__main__":
     
     # Ingest a document
     response = rag.ingest_document("document.txt")
+    print("\nIngesting document:")
     print(response)
     
-    # Query the system
-    response = rag.query("What is the truthful qa?")
-    print(response)
+    # Example queries about TruthfulQA
+    questions = [
+        "What is TruthfulQA and what is its purpose?",
+        "What are the key evaluation criteria in TruthfulQA?",
+        "What are some challenges in TruthfulQA?"
+    ]
+    
+    print("\nAsking questions about TruthfulQA:")
+    for question in questions:
+        print(f"\nQ: {question}")
+        response = rag.query(question)
+        print(f"A: {response}")
+    
+    # Clean up
+    print("\nCleaning up database...")
+    result = rag.clear_database()
+    print(result)
